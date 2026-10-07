@@ -1,0 +1,16 @@
+name: openhack
+
+services:
+  openhack:
+    build:
+      context: .
+      args:
+        USERNAME: ${DOCKER_USER}
+    image: openhack:latest
+    init: true
+    stdin_open: true
+    tty: true
+    network_mode: host    # Linux/WSL only
+    volumes:
+      - "${JXSCOUT}:/home/${DOCKER_USER}/jxscout"
+      - "${BB}:/home/${DOCKER_USER}/bb"
